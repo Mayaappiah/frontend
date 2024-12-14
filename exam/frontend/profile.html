@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Sparkle Foods</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('/pictures/background.jpeg'); /* Replace with the actual path or URL of the image */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .profile-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .profile-container h2 {
+      color: #ff69b4;
+      margin-bottom: 20px;
+    }
+
+    .profile-container p {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <h2>User Profile</h2>
+    <p><strong>Name:</strong> <span id="profile-name"></span></p>
+    <p><strong>Phone Number:</strong> <span id="profile-number"></span></p>
+    <p><strong>Email:</strong> <span id="profile-email"></span></p>
+    <p><strong>Allergies:</strong> <span id="profile-allergies"></span></p>
+    <p><strong>Dietary Restrictions:</strong> <span id="profile-dietary-restrictions"></span></p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      document.getElementById('profile-name').textContent = urlParams.get('name');
+      document.getElementById('profile-number').textContent = urlParams.get('number');
+      document.getElementById('profile-email').textContent = urlParams.get('email');
+      document.getElementById('profile-allergies').textContent = urlParams.get('allergies');
+      document.getElementById('profile-dietary-restrictions').textContent = urlParams.get('dietary-restrictions');
+    });
+  </script>
+</body>
+</html>

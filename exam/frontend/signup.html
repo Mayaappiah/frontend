@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Sparkle Foods</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('/pictures/background.jpeg'); 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .signup-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .signup-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff69b4;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ddd;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    a.button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    a.button:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="signup-form">
+      <h2>Sign Up</h2>
+      <form id="signupForm">
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="input-group">
+          <label for="number">Phone Number</label>
+          <input type="tel" id="number" name="number" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-group">
+          <label for="allergies">Allergies</label>
+          <textarea id="allergies" name="allergies" rows="2" required></textarea>
+        </div>
+        <div class="input-group">
+          <label for="dietary-restrictions">Dietary Restrictions</label>
+          <textarea id="dietary-restrictions" name="dietary-restrictions" rows="2" required></textarea>
+        </div>
+        <a href="#" class="button" onclick="submitForm()">Sign Up</a>
+      </form>
+    </div>
+  </div>
+  <script>
+    function submitForm() {
+      const form = document.getElementById('signupForm');
+      const formData = new FormData(form);
+      const queryString = new URLSearchParams(formData).toString();
+      window.location.href = `profile.html?${queryString}`;
+    }
+  </script>
+</body>
+</html>

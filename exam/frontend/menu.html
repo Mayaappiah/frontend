@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;  /* Removed the extra quote after sans-serif */
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .cart-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff43ae;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .cart-button:hover {
+            background-color: #ff226c;
+        }
+        .banner {
+            text-align: center;
+            padding: 100px 20px;
+            background-image: url('/pictures/background.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .banner h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .banner p {
+            font-size: 1.2em;
+        }
+        .menu-container {
+            padding: 20px;
+        }
+        .menu-item {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .menu-item div {
+            flex: 1;
+            margin-left: 10px;
+        }
+        .menu-item button {
+            background-color: #ea4b8a;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu-item button:hover {
+            background-color: #eb2a81;
+        }
+        .nutrition-facts {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 0;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            z-index: 1;
+        }
+        .menu-item:hover .nutrition-facts {
+            display: block;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .navigation-buttons-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .navigation-buttons-bottom a {
+            background-color: #ff43ae;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .navigation-buttons-bottom a:hover {
+            background-color: #ff226c;
+        }
+    </style>
+</head>
+<body>
+    <a href="cart.html" class="cart-button">Cart</a>
+    
+    <div class="menu-container">
+        <div class="banner">
+            <h1>Sparkle Foods</h1>
+            <p>Menu</p>
+        </div>
+        <div class="menu">
+            <div id="BlueberryMuffin" class="menu-section">
+                <div class="menu-item">
+                    <img src="/pictures/blue.jpeg" alt="Blueberry Muffin">
+                    <div>
+                      <h3> Blueberry Muffin</h3>
+                        <p>GH₵40.00</p>
+                        <div class="nutrition-facts">
+                            <p><strong>Calories:</strong> 250</p>
+                            <p><strong>Fat:</strong> 10g</p>
+                            <p><strong>Carbs:</strong> 35g</p>
+                            <p><strong>Protein:</strong> 5g</p>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('BlueberryMuffin', 40)">Order now</button>
+                </div>
+                <div class="menu-item">
+                    <img src="/pictures/cake.jpeg" alt="Chocolate cake">
+                    <div>
+                        <h3>Chocolate Cake</h3>
+                        <p>GH₵35.00</p>
+                        <div class="nutrition-facts">
+                            <p><strong>Calories:</strong> 300</p>
+                            <p><strong>Fat:</strong> 5g</p>
+                            <p><strong>Carbs:</strong> 60g</p>
+                            <p><strong>Protein:</strong> 5g</p>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('Chocolate cake', 45)">Order now</button>
+                </div>
+                <div class="menu-item">
+                    <img src="/pictures/pizza.jpeg" alt="Chicken pizza">
+                    <div>
+                        <h3>Chicken Pizza</h3>
+                        <p>GH₵65.00</p>
+                        <div class="nutrition-facts">
+                            <p><strong>Calories:</strong> 230</p>
+                            <p><strong>Fat:</strong> 7g</p>
+                            <p><strong>Carbs:</strong> 37g</p>
+                            <p><strong>Protein:</strong> 6g</p>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('Chickenpizza', 35)">Order now</button>
+                </div>
+                <div class="menu-item">
+                    <img src="/pictures/noodles.jpeg" alt="Beef  Noodles">
+                    <div>
+                        <h3>Beef Noodles</h3>
+                        <p>GH₵50.00</p>
+                        <div class="nutrition-facts">
+                            <p><strong>Calories:</strong> 500</p>
+                            <p><strong>Fat:</strong> 15g</p>
+                            <p><strong>Carbs:</strong> 50g</p>
+                            <p><strong>Protein:</strong> 30g</p>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('Beef noodles', 50)">Order now</button>
+                </div>
+                <div class="menu-item">
+                    <img src="/pictures/spag.jpeg" alt="Spaghetti">
+                    <div>
+                        <h3>Spaghetti</h3>
+                        <p>GH₵55.00</p>
+                        <div class="nutrition-facts">
+                            <p><strong>Calories:</strong> 400</p>
+                            <p><strong>Fat:</strong> 8g</p>
+                            <p><strong>Carbs:</strong> 70g</p>
+                            <p><strong>Protein:</strong> 10g</p>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('Spaghetti', 55)">Order now</button>
+                </div>
+                <div class="menu-item">
+                    <img src="/pictures/fruit.jpg" alt="Fruit Salad">
+                    <div>
+                        <h3>Fruit Salad</h3>
+                        <p>GH₵30.00</p>
+                        <div class="nutrition-facts">
+                            <p><strong>Calories:</strong> 350</p>
+                            <p><strong>Fat:</strong> 12g</p>
+                            <p><strong>Carbs:</strong> 50g</p>
+                            <p><strong>Protein:</strong> 8g</p>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('Fruit Salad', 30)">Order now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation-buttons-bottom">
+        <a href="profile.html">Back</a>
+    </div>
+
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: name, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + " has been added to your cart.");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif';
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .cart-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .cart-item div {
+            flex: 1;
+            margin-left: 10px;
+        }
+        .cart-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .cart-item p {
+            margin: 5px 0;
+        }
+        .cart-item .price {
+            font-weight: bold;
+        }
+        .cart-item .remove-button {
+            background-color: #ff4bb7;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-item .remove-button:hover {
+            background-color: #ff1a98;
+        }
+        .cart-total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .cart-buttons {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .cart-buttons button {
+            background-color: #e12c81;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .cart-buttons button:hover {
+            background-color: #ab2266;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <div id="cart-items"></div>
+        <p class="cart-total">Total: GH₵<span id="cart-total">0</span></p>
+        <div class="cart-buttons">
+            <button onclick="clearCart()">Clear Cart</button>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+
+                cartItem.innerHTML = `
+                    <img src="/pictures/${item.name.toLowerCase().replace(/ /g, '')}.jpeg" alt="${item.name}">
+                    <div>
+                        <h3>${item.name}</h3>
+                        <p class="price">GH₵${item.price.toFixed(2)}</p>
+                    </div>
+                    <button class="remove-button" onclick="removeFromCart(${index})">Remove</button>
+                `;
+
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            loadCart();
+        }
+
+        function checkout() {
+            alert('Proceeding to checkout...');
+            // Implement checkout functionality here
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
+</body>
+</html>
